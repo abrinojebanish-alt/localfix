@@ -14,7 +14,7 @@ export type CommissionStatus = "pending" | "paid_to_localfix" | "waived" | "disp
 
 export type PaymentStatus = "unpaid" | "paid_directly" | "disputed";
 
-export interface Database {
+export type Database = {
   public: {
     Tables: {
       profiles: {
@@ -34,6 +34,7 @@ export interface Database {
           email: string;
         };
         Update: Partial<Database["public"]["Tables"]["profiles"]["Row"]>;
+        Relationships: [];
       };
       categories: {
         Row: {
@@ -50,6 +51,7 @@ export interface Database {
           slug: string;
         };
         Update: Partial<Database["public"]["Tables"]["categories"]["Row"]>;
+        Relationships: [];
       };
       providers: {
         Row: {
@@ -76,6 +78,7 @@ export interface Database {
           town: string;
         };
         Update: Partial<Database["public"]["Tables"]["providers"]["Row"]>;
+        Relationships: [];
       };
       provider_services: {
         Row: {
@@ -89,6 +92,7 @@ export interface Database {
           category_id: string;
         };
         Update: Partial<Database["public"]["Tables"]["provider_services"]["Row"]>;
+        Relationships: [];
       };
       bookings: {
         Row: {
@@ -129,6 +133,7 @@ export interface Database {
           preferred_time: string;
         };
         Update: Partial<Database["public"]["Tables"]["bookings"]["Row"]>;
+        Relationships: [];
       };
       reviews: {
         Row: {
@@ -147,6 +152,7 @@ export interface Database {
           rating: number;
         };
         Update: Partial<Database["public"]["Tables"]["reviews"]["Row"]>;
+        Relationships: [];
       };
       commission_settings: {
         Row: {
@@ -157,6 +163,7 @@ export interface Database {
         };
         Insert: Partial<Database["public"]["Tables"]["commission_settings"]["Row"]>;
         Update: Partial<Database["public"]["Tables"]["commission_settings"]["Row"]>;
+        Relationships: [];
       };
       provider_commission_settings: {
         Row: {
@@ -173,6 +180,7 @@ export interface Database {
           commission_percentage: number;
         };
         Update: Partial<Database["public"]["Tables"]["provider_commission_settings"]["Row"]>;
+        Relationships: [];
       };
       commission_history: {
         Row: {
@@ -192,7 +200,12 @@ export interface Database {
           provider_id: string;
         };
         Update: Partial<Database["public"]["Tables"]["commission_history"]["Row"]>;
+        Relationships: [];
       };
     };
+    Views: {};
+    Functions: {};
+    Enums: {};
+    CompositeTypes: {};
   };
-}
+};

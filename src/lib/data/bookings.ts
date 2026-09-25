@@ -64,8 +64,3 @@ export async function getAllBookings(): Promise<BookingWithDetails[]> {
   if (error) throw error;
   return (data ?? []).map(toBookingWithDetails);
 }
-
-/** Whether a booking is still early enough in its lifecycle for the customer to cancel it. */
-export function isCancellableByCustomer(booking: Pick<Booking, "status">): boolean {
-  return booking.status === "pending" || booking.status === "accepted";
-}

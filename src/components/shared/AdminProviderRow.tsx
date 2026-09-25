@@ -28,7 +28,7 @@ export function AdminProviderRow({ provider, currentOverride, defaultPercentage 
   const router = useRouter();
   const { show } = useToast();
 
-  async function updateProvider(fields: Record<string, unknown>, action: string) {
+  async function updateProvider(fields: Partial<Provider>, action: string) {
     setError("");
     setLoading(action);
     const supabase = createClient();

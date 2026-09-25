@@ -10,8 +10,8 @@ import { ReviewForm } from "./ReviewForm";
 import { useToast } from "@/components/ui/Toast";
 import { createClient } from "@/lib/supabase/client";
 import { formatCurrency } from "@/lib/utils";
-import { isCancellableByCustomer } from "@/lib/data/bookings";
-import type { BookingWithDetails } from "@/types";
+import { isCancellableByCustomer } from "@/lib/booking-rules";
+import type { Booking, BookingWithDetails } from "@/types";
 
 interface CustomerBookingActionsProps {
   booking: BookingWithDetails;
@@ -26,7 +26,7 @@ export function CustomerBookingActions({ booking, hasReview }: CustomerBookingAc
   const router = useRouter();
   const { show } = useToast();
 
-  async function updateBooking(fields: Record<string, unknown>, kind: "cancel" | "confirm" | "dispute") {
+  async function updateBooking(fields: Partial<Booking>, kind: "cancel" | "confirm" | "dispute") {
     setError("");
     setLoading(kind);
     const supabase = createClient();
